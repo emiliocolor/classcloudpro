@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materiales Educativos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: transparent !important;
+            padding: 0;
+            margin: 0;
+        }
+        .main-content {
+            padding: 0 !important;
+        }
+        .rounded-container {
+            box-shadow: none !important;
+            border: none !important;
+            padding: 25px !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sección de Materiales Educativos -->
+    <div class="active-section">
+        <div class="rounded-container mb-4">
+            <h2 class="section-title"><i class="fas fa-book"></i> Materiales Educativos</h2>
+            
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <div class="search-container">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="form-control search-input" placeholder="Buscar materiales..." id="materialSearchInput">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="programacion">Programación</button>
+                <button class="filter-btn" data-filter="ingenieria">Ingeniería</button>
+            </div>
+            
+            <div class="row g-4" id="materialItemsContainer">
+                <!-- Los materiales se cargarán aquí dinámicamente -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script para funcionalidades -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Datos de materiales
+            const materialsData = [
+                { name: 'Programación explicada paso a paso', icon: 'fas fa-code', url: '#', category: 'programacion', description: 'Curso introductorio que enseña los conceptos fundamentales de la programación de manera clara y progresiva.' },
+                { name: 'Curso principal: Guía para tus primeros pasos', icon: 'fas fa-laptop-code', url: '#', category: 'programacion', description: 'Guía pensada para personas que inician en el mundo digital, cubriendo los conocimientos esenciales para comenzar.' },
+                { name: 'Fundamentos de Windows 10 (Informática)', icon: 'fas fa-desktop', url: '#', category: 'programacion', description: 'Aprende a utilizar y configurar correctamente el sistema operativo Windows Diez, desde lo básico hasta funciones intermedias.' },
+                { name: 'Aprende desde cero absoluto hasta trainee', icon: 'fas fa-graduation-cap', url: '#', category: 'programacion', description: 'Recorrido completo desde los conceptos más elementales de la programación hasta alcanzar habilidades básicas para postular a un puesto como aprendiz en tecnología.' },
+                { name: 'Curso de accesibilidad web', icon: 'fas fa-universal-access', url: '#', category: 'programacion', description: 'Aprende a diseñar sitios web accesibles que cumplan con los estándares internacionales y permitan el acceso a todos los usuarios.' },
+                { name: 'Diseño responsivo con cajas flexibles (CSS3)', icon: 'fas fa-laptop-code', url: '#', category: 'programacion', description: 'Aprende a crear sitios web adaptables a diferentes dispositivos utilizando el sistema de diseño flexible de las hojas de estilo en cascada versión tres.' },
+                { name: 'PrimeFaces y Spring Boot: Crea tu primera app web con Java', icon: 'fab fa-java', url: '#', category: 'programacion', description: 'Crea tu primera aplicación web utilizando el lenguaje Java, empleando la biblioteca PrimeFaces para el diseño visual y el marco de desarrollo Spring Boot para la lógica del servidor.' },
+                { name: 'Curso de diseño web con Bootstrap', icon: 'fab fa-bootstrap', url: '#', category: 'programacion', description: 'Aprende a utilizar el marco de trabajo Bootstrap para crear sitios web modernos, responsivos y compatibles con múltiples navegadores de manera eficiente.' },
+                { name: 'Crea aplicaciones iOS y Android con Angular', icon: 'fab fa-angular', url: '#', category: 'programacion', description: 'Aprende a desarrollar aplicaciones móviles multiplataforma para sistemas operativos de Apple y Google usando el marco de desarrollo Angular.' },
+                { name: 'Aprende 5 lenguajes de programación desde cero', icon: 'fas fa-code', url: '#', category: 'programacion', description: 'Introducción práctica a cinco lenguajes populares de programación, enseñados desde los conceptos básicos hasta ejercicios funcionales.' },
+                { name: 'Comienza a programar en Python desde cero', icon: 'fab fa-python', url: '#', category: 'programacion', description: 'Curso completo del lenguaje Python, iniciando desde los fundamentos y avanzando a estructuras básicas de control y funciones.' },
+                { name: 'Java SE: Taller de programación de cero a trainee', icon: 'fab fa-java', url: '#', category: 'programacion', description: 'Aprende a programar con el lenguaje Java en su edición estándar, desde los fundamentos hasta alcanzar un nivel principiante.' },
+                { name: 'Colección de libros esenciales de programación', icon: 'fas fa-book', url: '#', category: 'programacion', description: 'Explora una selección de libros clave para aprender programación, estructuras de datos, algoritmos, desarrollo web y mejores prácticas del código limpio.' },
+                { name: 'Proceso CRUD con C# y Oracle Database', icon: 'fas fa-database', url: '#', category: 'programacion', description: 'Aprende a crear, leer, actualizar y eliminar datos en una aplicación desarrollada con el lenguaje C Sharp, conectada a una base de datos Oracle.' },
+                { name: 'Proceso CRUD con C# y PostgreSQL', icon: 'fas fa-database', url: '#', category: 'programacion', description: 'Desarrolla aplicaciones con operaciones básicas de gestión de datos utilizando el lenguaje C Sharp junto con la base de datos PostgreSQL.' },
+                { name: 'Proceso CRUD con C# y Visual FoxPro', icon: 'fas fa-database', url: '#', category: 'programacion', description: 'Integra el lenguaje C Sharp con el sistema Visual FoxPro para realizar operaciones básicas de gestión de información en aplicaciones de escritorio.' },
+                { name: 'Visual FoxPro - Clases visuales (nueva versión)', icon: 'fas fa-desktop', url: '#', category: 'programacion', description: 'Aprende a desarrollar interfaces gráficas y sistemas de base de datos con la nueva versión del entorno de desarrollo Visual FoxPro.' },
+                
+                { name: 'Curso completo de SolidWorks', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1X_-ItOOJsz-Y3ophdyr8Iry7NefREZGX?usp=sharing', category: 'ingenieria', description: 'Diseño mecánico y modelado 3D con SolidWorks.' },
+                { name: 'Curso completo de AutoCAD', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/18g6GjVpwoBlb4OsguWRz67iqCjH4ukxE?usp=sharing', category: 'ingenieria', description: 'Dibujo técnico y diseño asistido por computadora.' },
+                { name: 'Especialización en AutoCAD Electrical', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1ZXDQiTfrDd-9WMcBCcBQHjhfZa3CwruU?usp=sharing', category: 'ingenieria', description: 'Diseño de diagramas eléctricos con AutoCAD Electrical.' },
+                { name: 'Minitab para control de calidad', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1AmANOYFge92RE-9ME6_i6vqIxnMuoscg?usp=sharing', category: 'ingenieria', description: 'Herramienta estadística para control de calidad y mejora de procesos.' },
+                { name: 'Control de motores con variadores de frecuencia', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1livPk80k0AKG7rjGqJnKhqEmm5-LbXJG?usp=sharing', category: 'ingenieria', description: 'Control de motores eléctricos mediante variadores de frecuencia.' },
+                { name: 'Fundamentos de mecánica industrial', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1e6-1V1HNI8piBYogBGnliwpirwu4Aksi?usp=sharing', category: 'ingenieria', description: 'Aplicaciones prácticas de mecánica industrial.' },
+                { name: 'Programación de PLCs industriales', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1ElAGOumeCxcJLt5jYawriQMC5AfKDICq?usp=sharing', category: 'ingenieria', description: 'Programación de controladores lógicos programables para automatización.' },
+                { name: 'Programación CNC avanzada', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/16LcdRMoqxxt5DSpu8Ra8XPhGMAv5OfDL?usp=sharing', category: 'ingenieria', description: 'Programación de máquinas de control numérico computarizado.' },
+                { name: 'Biblioteca de ingeniería', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/10PnRHTQF9xLMrk7LTpDolJPHsym2l8z-?usp=sharing', category: 'ingenieria', description: 'Colección de libros especializados en diversas ramas de la ingeniería.' },
+                { name: 'Core Tools para gestión de calidad', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1JgrDnBuUd5Qa58GluUPDw1B88R8zA17l?usp=sharing', category: 'ingenieria', description: 'Herramientas fundamentales para la gestión de calidad en la industria.' },
+                { name: 'Técnicas de balanceo de líneas de producción', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1SLxVgQIhdTFuVAMfUd8HZ65cek9233B6?usp=sharing', category: 'ingenieria', description: 'Optimización del flujo de producción en líneas de manufactura.' },
+                { name: 'Introducción a MRP (Planificación de Requisitos de Materiales)', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1Ffg78NB2Z-A3nh-uphysB_fxnPWU2Gqg?usp=sharing', category: 'ingenieria', description: 'Fundamentos de MRP para gestión de materiales.' },
+                { name: 'Learn Manufacturing', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1kT1-V0s8UtgbQgTqfKITUIHTAsyjCczU?usp=sharing', category: 'ingenieria', description: 'Recursos para aprender sobre manufactura.' },
+                { name: 'Industria 4.0', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1fDhXC5EH-5X9sz9m5QdIhHny-9kVWZ4g?usp=sharing', category: 'ingenieria', description: 'Materiales sobre la cuarta revolución industrial.' },
+                { name: 'Programación y control de PLC', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1dz51jwINMHkxPo-IMsHEiTx4OEIxBD1H?usp=sharing', category: 'ingenieria', description: 'Recursos avanzados sobre controladores lógicos programables.' }
+            ];
+
+            // Renderizar materiales
+            function renderMaterials(filter = 'all') {
+                const container = document.getElementById('materialItemsContainer');
+                container.innerHTML = '';
+
+                const filteredMaterials = filter === 'all' 
+                    ? materialsData 
+                    : materialsData.filter(material => material.category === filter);
+
+                filteredMaterials.forEach(material => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-6 col-lg-4 material-item';
+                    col.setAttribute('data-category', material.category);
+
+                    const card = document.createElement('div');
+                    card.className = 'card material-card h-100';
+
+                    const cardBody = document.createElement('div');
+                    cardBody.className = 'card-body';
+
+                    const badge = document.createElement('span');
+                    badge.className = `badge material-badge badge-${material.category}`;
+                    badge.textContent = material.category === 'programacion' ? 'Programación' : 'Ingeniería';
+                    cardBody.appendChild(badge);
+
+                    const title = document.createElement('h5');
+                    title.textContent = material.name;
+                    cardBody.appendChild(title);
+
+                    const description = document.createElement('p');
+                    description.className = 'small text-muted';
+                    description.textContent = material.description;
+                    cardBody.appendChild(description);
+
+                    const cardFooter = document.createElement('div');
+                    cardFooter.className = 'card-footer bg-white';
+
+                    const link = document.createElement('a');
+                    link.href = material.url;
+                    link.target = '_blank';
+                    link.className = 'btn btn-primary btn-sm';
+                    link.textContent = 'Abrir enlace';
+                    cardFooter.appendChild(link);
+
+                    card.appendChild(cardBody);
+                    card.appendChild(cardFooter);
+                    col.appendChild(card);
+                    container.appendChild(col);
+                });
+            }
+
+            // Filtros
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remover clase active de todos los botones
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Agregar clase active al botón clickeado
+                    button.classList.add('active');
+                    
+                    const filterValue = button.getAttribute('data-filter');
+                    renderMaterials(filterValue);
+                });
+            });
+
+            // Búsqueda
+            const searchInput = document.getElementById('materialSearchInput');
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                const materialItems = document.querySelectorAll('.material-item');
+                
+                materialItems.forEach(item => {
+                    const title = item.querySelector('h5').textContent.toLowerCase();
+                    const description = item.querySelector('p').textContent.toLowerCase();
+                    
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+
+            // Renderizar inicialmente
+            renderMaterials();
+        });
+    </script>
+</body>
+</html>
