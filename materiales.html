@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cursos</title>
+    <title>Cursos y Proyectos</title>
     <!-- Favicon -->
     <link rel="icon" href="https://raw.githubusercontent.com/emiversal/database/334d5dd44377663b5e46c9ae6d77582e33ee7281/favicon.png" type="image/png">
     <!-- Bootstrap CSS -->
@@ -25,79 +25,366 @@
     .rounded-container {
         box-shadow: none !important;
         border: none !important;
-        padding: 25px !important;
+        padding: 20px !important;
     }
-:root {
-    --primary-purple: #7e22ce;
-    --primary-purple-light: #a855f7;
-    --primary-purple-lighter: #c084fc;
-}
+    :root {
+        --primary-purple: #7e22ce;
+        --primary-purple-light: #a855f7;
+        --primary-purple-lighter: #c084fc;
+        --warning-color: #f59e0b;
+        --danger-color: #ef4444;
+        --success-color: #10b981;
+        --domotica-color: #3b82f6;
+        --electronica-color: #10b981;
+    }
 
-.badge-programacion {
-    background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-light) 100%);
-    color: white;
-}
+    .badge-programacion {
+        background: linear-gradient(135deg, var(--primary-purple) 0%, var(--primary-purple-light) 100%);
+        color: white;
+    }
 
-.material-item[data-category="programacion"] .fas,
-.material-item[data-category="programacion"] .fab {
-    color: var(--primary-purple) !important;
-    transition: color 0.3s ease;
-}
+    .material-item[data-category="programacion"] .fas,
+    .material-item[data-category="programacion"] .fab {
+        color: var(--primary-purple) !important;
+        transition: color 0.3s ease;
+    }
 
-.material-item[data-category="programacion"]:hover .fas,
-.material-item[data-category="programacion"]:hover .fab {
-    color: var(--primary-purple-light) !important;
-}
+    .material-item[data-category="programacion"]:hover .fas,
+    .material-item[data-category="programacion"]:hover .fab {
+        color: var(--primary-purple-light) !important;
+    }
 
-.badge-ingenieria {
-    background: linear-gradient(135deg, var(--warning-color) 0%, #fbbf24 100%);
-    color: white;
-}
+    .badge-ingenieria {
+        background: linear-gradient(135deg, var(--warning-color) 0%, #fbbf24 100%);
+        color: white;
+    }
 
-.badge-robotica {
-    background: linear-gradient(135deg, var(--danger-color) 0%, #f87171 100%);
-    color: white;
-}
+    .badge-robotica {
+        background: linear-gradient(135deg, var(--danger-color) 0%, #f87171 100%);
+        color: white;
+    }
 
-.material-badge {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 0.85rem;
-    padding: 0.5em 0.9em;
-    border-radius: 12px;
-    width: fit-content;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    .badge-domotica {
+        background: linear-gradient(135deg, var(--domotica-color) 0%, #93c5fd 100%);
+        color: white;
+    }
+
+    .badge-electronica {
+        background: linear-gradient(135deg, var(--electronica-color) 0%, #6ee7b7 100%);
+        color: white;
+    }
+
+    .material-badge {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 0.85rem;
+        padding: 0.5em 0.9em;
+        border-radius: 12px;
+        width: fit-content;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
     .card-body {
         padding: 1.25rem;
+        text-align: left; /* Alineación a la izquierda */
+    }
+    /* Estilos para el título */
+    .section-title-container {
+        margin-bottom: 20px;
+        text-align: left; /* Alineación a la izquierda */
+    }
+    .section-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin-bottom: 5px;
+    }
+    .section-subtitle {
+        color: #6b7280;
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+    /* Barra de búsqueda */
+    .search-section {
+        display: flex;
+        justify-content: flex-start; /* Alineación a la izquierda */
+        margin-bottom: 20px;
+        padding: 0 15px;
+    }
+    .search-container {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+    }
+    .search-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+    }
+    .search-input {
+        padding-left: 40px;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        height: 45px;
+        font-size: 0.95rem;
+        width: 100%;
+    }
+    /* Barra de progreso */
+    .progress-container {
+        background: white;
+        border-radius: 8px;
+        padding: 15px 20px;
+        margin: 0 0 20px 0; /* Eliminado el auto para alinear a la izquierda */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e5e7eb;
+        width: 100%;
+        max-width: 800px;
+        text-align: left; /* Alineación a la izquierda */
+    }
+    .progress-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+    }
+    .progress-title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #374151;
+        margin: 0 10px 5px 0;
+    }
+    .progress-percentage {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: var(--success-color);
+        margin-bottom: 5px;
+    }
+    .progress-bar-container {
+        height: 8px;
+        background: #f3f4f6;
+        border-radius: 4px;
+        margin-bottom: 8px;
+        overflow: hidden;
+        width: 100%;
+    }
+    .progress-bar {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 0.6s ease;
+        background: linear-gradient(90deg, var(--success-color) 0%, #34d399 100%);
+    }
+    .progress-stats {
+        display: flex;
+        justify-content: flex-start; /* Alineación a la izquierda */
+        font-size: 0.8rem;
+        color: #6b7280;
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .progress-stat {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin: 3px 0;
+    }
+    .progress-stat i {
+        font-size: 0.9rem;
+    }
+    .stat-completed {
+        color: var(--success-color);
+    }
+    .stat-in-progress {
+        color: var(--warning-color);
+    }
+    .stat-total {
+        color: #4b5563;
+    }
+    /* Filtros */
+    .filters-container {
+        display: flex;
+        justify-content: flex-start; /* Alineación a la izquierda */
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        padding: 0 10px;
+        gap: 8px;
+    }
+    .filter-btn {
+        border: none;
+        background: #f3f4f6;
+        color: #4b5563;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .filter-btn:hover {
+        background: #e5e7eb;
+    }
+    .filter-btn.active {
+        background: var(--primary-purple);
+        color: white;
+    }
+    /* Tarjetas de cursos */
+    .course-checkboxes {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+        flex-wrap: wrap;
+    }
+    .form-check {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+    .form-check-input {
+        margin-top: 0;
+        cursor: pointer;
+        flex-shrink: 0;
+    }
+    .form-check-label {
+        cursor: pointer;
+        font-size: 0.8rem;
+        color: #4b5563;
+        white-space: nowrap;
+    }
+    .completed-course {
+        opacity: 0.9;
+        background-color: #f8fafc;
+    }
+    .completed-course .card-title {
+        text-decoration: line-through;
+        color: #6b7280;
+    }
+    .in-progress-course {
+        border-left: 4px solid var(--warning-color);
+    }
+    
+    /* Media queries para responsive */
+    @media (max-width: 768px) {
+        .rounded-container {
+            padding: 15px !important;
+        }
+        .section-title {
+            font-size: 1.5rem;
+        }
+        .section-subtitle {
+            font-size: 0.9rem;
+        }
+        .search-input {
+            height: 42px;
+            font-size: 0.9rem;
+        }
+        .progress-container {
+            padding: 12px 15px;
+        }
+        .progress-stats {
+            flex-direction: column;
+            gap: 5px;
+        }
+        .progress-stat {
+            justify-content: flex-start;
+        }
+        .filter-btn {
+            padding: 7px 14px;
+            font-size: 0.8rem;
+        }
+        .material-badge {
+            font-size: 0.8rem;
+        }
+        .card-title {
+            font-size: 1.1rem;
+        }
+    }
+    
+    @media (max-width: 576px) {
+        .section-title {
+            font-size: 1.3rem;
+        }
+        .section-subtitle {
+            font-size: 0.85rem;
+        }
+        .search-input {
+            height: 40px;
+        }
+        .progress-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .progress-percentage {
+            margin-top: 5px;
+        }
+        .course-checkboxes {
+            flex-direction: column;
+            gap: 8px;
+        }
+        .form-check-label {
+            white-space: normal;
+        }
     }
     </style>
 </head>
 <body>
-    <!-- Sección de Materiales Educativos -->
+    <!-- Sección de Cursos -->
     <div class="active-section">
         <div class="rounded-container mb-4">
-            <h2 class="section-title"><i class="fas fa-book"></i> Materiales Educativos</h2>
+            <!-- Título -->
+            <div class="section-title-container">
+                <h2 class="section-title"><i class="fas fa-book"></i> Cursos</h2>
+                <p class="section-subtitle">Explora nuestra colección de materiales educativos</p>
+            </div>
             
-            <div class="row mb-4">
-                <div class="col-md-8">
-                    <div class="search-container">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" class="form-control search-input" placeholder="Buscar materiales..." id="materialSearchInput">
-                    </div>
+            <!-- Barra de búsqueda -->
+            <div class="search-section">
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" class="form-control search-input" placeholder="Buscar cursos..." id="materialSearchInput">
                 </div>
             </div>
             
-            <div class="mb-4">
+            <!-- Barra de progreso -->
+            <div class="progress-container">
+                <div class="progress-header">
+                    <h4 class="progress-title">Tu progreso</h4>
+                    <span class="progress-percentage" id="progressPercentage">0%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%"></div>
+                </div>
+                <div class="progress-stats">
+                    <span class="progress-stat stat-completed">
+                        <i class="fas fa-check-circle"></i>
+                        <span id="completedCount">0</span> completados
+                    </span>
+                    <span class="progress-stat stat-in-progress">
+                        <i class="fas fa-spinner"></i>
+                        <span id="inProgressCount">0</span> en progreso
+                    </span>
+                    <span class="progress-stat stat-total">
+                        <i class="fas fa-book"></i>
+                        <span id="totalCount">0</span> en total
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filters-container">
                 <button class="filter-btn active" data-filter="all">Todos</button>
                 <button class="filter-btn" data-filter="programacion">Programación</button>
                 <button class="filter-btn" data-filter="ingenieria">Ingeniería</button>
                 <button class="filter-btn" data-filter="robotica">Robótica</button>
+                <button class="filter-btn" data-filter="domotica">Domótica</button>
+                <button class="filter-btn" data-filter="electronica">Electrónica</button>
             </div>
             
+            <!-- Lista de cursos -->
             <div class="row g-4" id="materialItemsContainer">
                 <!-- Los materiales se cargarán aquí dinámicamente -->
             </div>
@@ -108,7 +395,256 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <!-- Script para funcionalidades -->
-    <script src="https://emiversal.github.io/database/script_materiales_classcloudpro.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const materialsData = [
+            { name: 'Programación explicada paso a paso', icon: 'fas fa-code', url: 'https://drive.google.com/drive/folders/111BnZrTHfLmcL_auwZNIRY4QuaJTGtST?usp=sharing', category: 'programacion', description: 'Curso introductorio que enseña los conceptos fundamentales de la programación de manera clara y progresiva.' },
+            { name: 'Curso principal: Guía para tus primeros pasos', icon: 'fas fa-laptop-code', url: 'https://drive.google.com/drive/folders/18q7OJQ4O4vz4kHRooACI6_SPNSc8Olkx?usp=sharing', category: 'programacion', description: 'Guía pensada para personas que inician en el mundo digital, cubriendo los conocimientos esenciales para comenzar.' },
+            { name: 'Fundamentos de Windows 10 (Informática)', icon: 'fas fa-desktop', url: 'https://drive.google.com/drive/folders/1LZtMvcviVWH0PO9QoD3J-NGsXUA9kEJk?usp=sharing', category: 'programacion', description: 'Aprende a utilizar y configurar correctamente el sistema operativo Windows Diez, desde lo básico hasta funciones intermedias.' },
+            { name: 'Aprende desde cero absoluto hasta trainee', icon: 'fas fa-graduation-cap', url: 'https://drive.google.com/drive/folders/1D3UkNKEp-aMTzKSQIZa5dVAr4_G0kAd8?usp=sharing', category: 'programacion', description: 'Recorrido completo desde los conceptos más elementales de la programación hasta alcanzar habilidades básicas para postular a un puesto como aprendiz en tecnología.' },
+            { name: 'Curso de accesibilidad web', icon: 'fas fa-universal-access', url: 'https://drive.google.com/drive/folders/1wiYVtCzOnRfKwGGkae44_FCd4c2VP91S?usp=sharing', category: 'programacion', description: 'Aprende a diseñar sitios web accesibles que cumplan con los estándares internacionales y permitan el acceso a todos los usuarios.' },
+            { name: 'Diseño responsivo con cajas flexibles (CSS3)', icon: 'fas fa-laptop-code', url: 'https://drive.google.com/drive/folders/13Yj3LJD7bHQJhPQOa0LjQaFhJwjKnQVW?usp=sharing', category: 'programacion', description: 'Aprende a crear sitios web adaptables a diferentes dispositivos utilizando el sistema de diseño flexible de las hojas de estilo en cascada versión tres.' },
+            { name: 'PrimeFaces y Spring Boot: Crea tu primera app web con Java', icon: 'fab fa-java', url: 'https://drive.google.com/drive/folders/12zeH6LFYWDcvHP6qmCYI9T5NhGR_Hi7T?usp=sharing', category: 'programacion', description: 'Crea tu primera aplicación web utilizando el lenguaje Java, empleando la biblioteca PrimeFaces para el diseño visual y el marco de desarrollo Spring Boot para la lógica del servidor.' },
+            { name: 'Curso de diseño web con Bootstrap', icon: 'fab fa-bootstrap', url: 'https://drive.google.com/drive/folders/1FhnFAELw-84__5BXIMMRVvKvcEsbGU_8?usp=sharing', category: 'programacion', description: 'Aprende a utilizar el marco de trabajo Bootstrap para crear sitios web modernos, responsivos y compatibles con múltiples navegadores de manera eficiente.' },
+            { name: 'Crea aplicaciones iOS y Android con Angular', icon: 'fab fa-angular', url: 'https://drive.google.com/drive/folders/18Fb40pfwIh8_r7cTRocKfws8xf_wuxn0?usp=sharing', category: 'programacion', description: 'Aprende a desarrollar aplicaciones móviles multiplataforma para sistemas operativos de Apple y Google usando el marco de desarrollo Angular.' },
+            { name: 'Aprende 5 lenguajes de programación desde cero', icon: 'fas fa-code', url: 'https://drive.google.com/drive/folders/1BAwa1F_8d95IUuWtVRMa5ft5LYOvS9y9?usp=sharing', category: 'programacion', description: 'Introducción práctica a cinco lenguajes populares de programación, enseñados desde los conceptos básicos hasta ejercicios funcionales.' },
+            { name: 'Comienza a programar en Python desde cero', icon: 'fab fa-python', url: 'https://drive.google.com/drive/folders/1bQw3m6W3JUWh2OAg64bOJjCc_iHpzYtJ?usp=sharing', category: 'programacion', description: 'Curso completo del lenguaje Python, iniciando desde los fundamentos y avanzando a estructuras básicas de control y funciones.' },
+            { name: 'Java SE: Taller de programación de cero a trainee', icon: 'fab fa-java', url: 'https://drive.google.com/drive/folders/1by9dE0Ec9HObwAL0zlW80gevmn1cUo1V?usp=sharing', category: 'programacion', description: 'Aprende a programar con el lenguaje Java en su edición estándar, desde los fundamentos hasta alcanzar un nivel principiante.' },
+            { name: 'Colección de libros esenciales de programación', icon: 'fas fa-book', url: 'https://drive.google.com/drive/folders/1pz6cdZErEdPmwyC3PM-6DzETcoHHR1V1?usp=sharing', category: 'programacion', description: 'Explora una selección de libros clave para aprender programación, estructuras de datos, algoritmos, desarrollo web y mejores prácticas del código limpio.' },
+            { name: 'Proceso CRUD con C# y Oracle Database', icon: 'fas fa-database', url: 'https://drive.google.com/drive/folders/1QiqV0SEIhXu8zQ-ys2DGzCY8jmlU2fEX?usp=sharing', category: 'programacion', description: 'Aprende a crear, leer, actualizar y eliminar datos en una aplicación desarrollada con el lenguaje C Sharp, conectada a una base de datos Oracle.' },
+            { name: 'Proceso CRUD con C# y PostgreSQL', icon: 'fas fa-database', url: 'https://drive.google.com/drive/folders/1olV68Opj3o69wqrbNwEQ_5N22vjwTFHH?usp=sharing', category: 'programacion', description: 'Desarrolla aplicaciones con operaciones básicas de gestión de datos utilizando el lenguaje C Sharp junto con la base de datos PostgreSQL.' },
+            { name: 'Proceso CRUD con C# y Visual FoxPro', icon: 'fas fa-database', url: 'https://drive.google.com/drive/folders/1uOE14N5NJo_6KL7B1fgd7t5ASLJ8RdSQ?usp=sharing', category: 'programacion', description: 'Integra el lenguaje C Sharp con el sistema Visual FoxPro para realizar operaciones básicas de gestión de información en aplicaciones de escritorio.' },
+            { name: 'Visual FoxPro - Clases visuales (nueva versión)', icon: 'fas fa-desktop', url: 'https://drive.google.com/drive/folders/1zBOdRiUZDzpuvCZU6CJA4Gy8xCmQyCng?usp=sharing', category: 'programacion', description: 'Aprende a desarrollar interfaces gráficas y sistemas de base de datos con la nueva versión del entorno de desarrollo Visual FoxPro.' },
+            
+            { name: 'Curso completo de SolidWorks', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1X_-ItOOJsz-Y3ophdyr8Iry7NefREZGX?usp=sharing', category: 'ingenieria', description: 'Diseño mecánico y modelado 3D con SolidWorks.' },
+            { name: 'Curso completo de AutoCAD', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/18g6GjVpwoBlb4OsguWRz67iqCjH4ukxE?usp=sharing', category: 'ingenieria', description: 'Dibujo técnico y diseño asistido por computadora.' },
+            { name: 'Especialización en AutoCAD Electrical', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1ZXDQiTfrDd-9WMcBCcBQHjhfZa3CwruU?usp=sharing', category: 'ingenieria', description: 'Diseño de diagramas eléctricos con AutoCAD Electrical.' },
+            { name: 'Minitab para control de calidad', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1AmANOYFge92RE-9ME6_i6vqIxnMuoscg?usp=sharing', category: 'ingenieria', description: 'Herramienta estadística para control de calidad y mejora de procesos.' },
+            { name: 'Control de motores con variadores de frecuencia', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1livPk80k0AKG7rjGqJnKhqEmm5-LbXJG?usp=sharing', category: 'ingenieria', description: 'Control de motores eléctricos mediante variadores de frecuencia.' },
+            { name: 'Fundamentos de mecánica industrial', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1e6-1V1HNI8piBYogBGnliwpirwu4Aksi?usp=sharing', category: 'ingenieria', description: 'Aplicaciones prácticas de mecánica industrial.' },
+            { name: 'Programación de PLCs industriales', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1ElAGOumeCxcJLt5jYawriQMC5AfKDICq?usp=sharing', category: 'ingenieria', description: 'Programación de controladores lógicos programables para automatización.' },
+            { name: 'Programación CNC avanzada', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/16LcdRMoqxxt5DSpu8Ra8XPhGMAv5OfDL?usp=sharing', category: 'ingenieria', description: 'Programación de máquinas de control numérico computarizado.' },
+            { name: 'Biblioteca de ingeniería', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/10PnRHTQF9xLMrk7LTpDolJPHsym2l8z-?usp=sharing', category: 'ingenieria', description: 'Colección de libros especializados en diversas ramas de la ingeniería.' },
+            { name: 'Core Tools para gestión de calidad', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1JgrDnBuUd5Qa58GluUPDw1B88R8zA17l?usp=sharing', category: 'ingenieria', description: 'Herramientas fundamentales para la gestión de calidad en la industria.' },
+            { name: 'Técnicas de balanceo de líneas de producción', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1SLxVgQIhdTFuVAMfUd8HZ65cek9233B6?usp=sharing', category: 'ingenieria', description: 'Optimización del flujo de producción en líneas de manufactura.' },
+            { name: 'Introducción a MRP (Planificación de Requisitos de Materiales)', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1Ffg78NB2Z-A3nh-uphysB_fxnPWU2Gqg?usp=sharing', category: 'ingenieria', description: 'Fundamentos de MRP para gestión de materiales.' },
+            { name: 'Learn Manufacturing', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1kT1-V0s8UtgbQgTqfKITUIHTAsyjCczU?usp=sharing', category: 'ingenieria', description: 'Recursos para aprender sobre manufactura.' },
+            { name: 'Industria 4.0', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1fDhXC5EH-5X9sz9m5QdIhHny-9kVWZ4g?usp=sharing', category: 'ingenieria', description: 'Materiales sobre la cuarta revolución industrial.' },
+            { name: 'Programación y control de PLC', icon: 'fas fa-cogs', url: 'https://drive.google.com/drive/folders/1dz51jwINMHkxPo-IMsHEiTx4OEIxBD1H?usp=sharing', category: 'ingenieria', description: 'Recursos avanzados sobre controladores lógicos programables.' },
+            
+            { name: 'Curso Arduino: Aprende Electrónica y Programación', icon: 'fas fa-microchip', url: 'https://drive.google.com/drive/folders/1SXDAUq5T4wGty4sEpDWiaEOphD7kJSWW?usp=sharing', category: 'robotica', description: 'Fundamentos de electrónica y programación aplicados con Arduino.' }, 
+            { name: 'Curso Arduino y Microcontrolador PIC', icon: 'fas fa-robot', url: 'https://drive.google.com/drive/folders/1xu2R3qbjyoIFChbgFa031_5k_TLr27eK?usp=sharing', category: 'robotica', description: 'Integración de Arduino y PIC para el desarrollo de proyectos robóticos.' }, 
+            { name: 'Curso Arduino Interactivo: Domina el Control, Movimiento y Comunicación', icon: 'fas fa-gamepad', url: 'https://drive.google.com/drive/folders/1-Vbcs9PErnzbInOShajPGMNezbas58dZ?usp=sharing', category: 'robotica', description: 'Aprende a controlar dispositivos, movimiento y comunicación con Arduino.' }, 
+            { name: 'Curso Robótica con MATLAB y Arduino: Modelado y Simulación', icon: 'fas fa-brain', url: 'https://drive.google.com/drive/folders/1Y2I46pmqYA_ZfhQoGETsLr4U6gXcMUr8?usp=sharing', category: 'robotica', description: 'Simulación y modelado de sistemas robóticos usando MATLAB y Arduino.' },
+            
+            { name: 'Curso Sistemas Técnicos en la Edificación', icon: 'fas fa-home', url: 'https://drive.google.com/drive/folders/1NkRvx9b8ETgVOfQNjnvCgcdtrDBRLJHV?usp=sharing', category: 'domotica', description: 'Aprende sobre sistemas técnicos aplicados a la edificación y automatización de viviendas.' },
+            
+            { name: 'Curso Prueba Electrónica 1', icon: 'fas fa-bolt', url: '#', category: 'electronica', description: 'Texto prueba 1 - Curso introductorio a conceptos básicos de electrónica.' }
+        ];
+
+        // Obtener o inicializar el estado de los cursos desde localStorage
+        function getCourseStatus() {
+            const savedStatus = localStorage.getItem('courseStatus');
+            return savedStatus ? JSON.parse(savedStatus) : {};
+        }
+
+        // Guardar el estado de los cursos en localStorage
+        function saveCourseStatus(status) {
+            localStorage.setItem('courseStatus', JSON.stringify(status));
+        }
+
+        // Actualizar el estado de un curso
+        function updateCourseStatus(courseName, type, isChecked) {
+            const status = getCourseStatus();
+            
+            if (!status[courseName]) {
+                status[courseName] = { completed: false, inProgress: false };
+            }
+            
+            if (type === 'completed') {
+                status[courseName].completed = isChecked;
+                // Si se marca como completado, desmarcar en progreso
+                if (isChecked) {
+                    status[courseName].inProgress = false;
+                }
+            } else if (type === 'inProgress') {
+                status[courseName].inProgress = isChecked;
+                // Si se marca como en progreso, desmarcar completado
+                if (isChecked) {
+                    status[courseName].completed = false;
+                }
+            }
+            
+            saveCourseStatus(status);
+            updateProgress();
+        }
+
+        // Actualizar la visualización del progreso
+        function updateProgress() {
+            const status = getCourseStatus();
+            const totalCourses = materialsData.length;
+            let completedCount = 0;
+            let inProgressCount = 0;
+            
+            for (const course in status) {
+                if (status[course].completed) completedCount++;
+                if (status[course].inProgress) inProgressCount++;
+            }
+            
+            const percentage = Math.round((completedCount / totalCourses) * 100);
+            
+            document.getElementById('completedCount').textContent = completedCount;
+            document.getElementById('inProgressCount').textContent = inProgressCount;
+            document.getElementById('totalCount').textContent = totalCourses;
+            document.getElementById('progressBar').style.width = `${percentage}%`;
+            document.getElementById('progressPercentage').textContent = `${percentage}%`;
+        }
+
+        function renderMaterials(filter = 'all') {
+            const container = document.getElementById('materialItemsContainer');
+            container.innerHTML = '';
+
+            const filteredMaterials = filter === 'all' 
+                ? materialsData 
+                : materialsData.filter(material => material.category === filter);
+
+            const courseStatus = getCourseStatus();
+
+            filteredMaterials.forEach(material => {
+                const status = courseStatus[material.name] || { completed: false, inProgress: false };
+                
+                const col = document.createElement('div');
+                col.className = 'col-md-6 col-lg-4 material-item';
+                col.setAttribute('data-category', material.category);
+
+                const card = document.createElement('div');
+                card.className = `card material-card h-100 ${status.completed ? 'completed-course' : ''} ${status.inProgress ? 'in-progress-course' : ''}`;
+
+                const cardBody = document.createElement('div');
+                cardBody.className = 'card-body';
+
+                const badge = document.createElement('span');
+                badge.className = `badge material-badge badge-${material.category}`;
+                badge.textContent = material.category === 'programacion' ? 'Programación' : 
+                                  material.category === 'ingenieria' ? 'Ingeniería' : 
+                                  material.category === 'robotica' ? 'Robótica' :
+                                  material.category === 'domotica' ? 'Domótica' :
+                                  'Electrónica';
+                cardBody.appendChild(badge);
+
+                const title = document.createElement('h5');
+                title.className = 'card-title mt-3';
+                title.textContent = material.name;
+                cardBody.appendChild(title);
+
+                const description = document.createElement('p');
+                description.className = 'small text-muted';
+                description.textContent = material.description;
+                cardBody.appendChild(description);
+
+                // Contenedor para las casillas de verificación
+                const checkboxesContainer = document.createElement('div');
+                checkboxesContainer.className = 'course-checkboxes';
+
+                // Casilla de verificación para "En progreso"
+                const inProgressDiv = document.createElement('div');
+                inProgressDiv.className = 'form-check';
+                
+                const inProgressInput = document.createElement('input');
+                inProgressInput.className = 'form-check-input';
+                inProgressInput.type = 'checkbox';
+                inProgressInput.id = `inProgress-${material.name.replace(/\s+/g, '-')}`;
+                inProgressInput.checked = status.inProgress;
+                inProgressInput.addEventListener('change', function() {
+                    updateCourseStatus(material.name, 'inProgress', this.checked);
+                    renderMaterials(filter); // Re-render para actualizar estilos
+                });
+                
+                const inProgressLabel = document.createElement('label');
+                inProgressLabel.className = 'form-check-label small';
+                inProgressLabel.htmlFor = inProgressInput.id;
+                inProgressLabel.textContent = 'En progreso';
+                
+                inProgressDiv.appendChild(inProgressInput);
+                inProgressDiv.appendChild(inProgressLabel);
+                checkboxesContainer.appendChild(inProgressDiv);
+
+                // Casilla de verificación para "Completado"
+                const completedDiv = document.createElement('div');
+                completedDiv.className = 'form-check';
+                
+                const completedInput = document.createElement('input');
+                completedInput.className = 'form-check-input';
+                completedInput.type = 'checkbox';
+                completedInput.id = `completed-${material.name.replace(/\s+/g, '-')}`;
+                completedInput.checked = status.completed;
+                completedInput.addEventListener('change', function() {
+                    updateCourseStatus(material.name, 'completed', this.checked);
+                    renderMaterials(filter); // Re-render para actualizar estilos
+                });
+                
+                const completedLabel = document.createElement('label');
+                completedLabel.className = 'form-check-label small';
+                completedLabel.htmlFor = completedInput.id;
+                completedLabel.textContent = 'Completado';
+                
+                completedDiv.appendChild(completedInput);
+                completedDiv.appendChild(completedLabel);
+                checkboxesContainer.appendChild(completedDiv);
+
+                cardBody.appendChild(checkboxesContainer);
+
+                const cardFooter = document.createElement('div');
+                cardFooter.className = 'card-footer bg-white';
+
+                const link = document.createElement('a');
+                link.href = material.url;
+                link.target = '_blank';
+                link.className = 'btn btn-primary btn-sm';
+                link.textContent = 'Abrir enlace';
+                cardFooter.appendChild(link);
+
+                card.appendChild(cardBody);
+                card.appendChild(cardFooter);
+                col.appendChild(card);
+                container.appendChild(col);
+            });
+        }
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                renderMaterials(filterValue);
+            });
+        });
+
+        const searchInput = document.getElementById('materialSearchInput');
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const materialItems = document.querySelectorAll('.material-item');
+            
+            materialItems.forEach(item => {
+                const title = item.querySelector('.card-title').textContent.toLowerCase();
+                const description = item.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+
+        // Inicializar
+        renderMaterials();
+        updateProgress();
+    });
+</script>
 </body>
 </html>
-
